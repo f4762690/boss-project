@@ -1,0 +1,13 @@
+{
+  "userInfo":{
+    "status":"在职-考虑机会",
+    "location":"深圳",
+    "job":"web前端",
+    "salary":"15k-18k",
+    "industry":["移动互联网","互联网","IT软件"]
+  },
+  "hot":{
+    "hotJob":["Java","PHP","Andiroid","Web前端","iOS","运营","产品经理"],
+    "hotCompany":["腾讯","百度","阿里巴巴","美团","京东","网易","携程","华为","乐视"]
+  }
+}
