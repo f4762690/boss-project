@@ -34,7 +34,6 @@ export default new Router({
       path: '/job/searchPage',
       name: 'searchPage',
       components: {
-        "default": resolve => require(["../components/job/job.vue"], resolve),
         "otherPage": resolve => require(["../components/searchPage/searchPage.vue"], resolve)
       }
     },

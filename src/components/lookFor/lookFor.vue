@@ -65,7 +65,6 @@
         }
       },
       mounted(){
-          debugger;
         this.userInfo  = this.$route.query.userInfo;
       },
       methods:{
@@ -105,6 +104,10 @@
   .hideToShow-enter-active,.hideToShow-leave-active{
     opacity:0;
   }
+  .icon-add{
+     border-right:1px solid #fff;
+     padding-right:10px;
+   }
   .lookFor-wrapper{
     position:fixed;
     top:0;
@@ -159,16 +162,17 @@
   }
   .footer{
     z-index:300;
-    font-size:16px;
+    height:40px;
+    line-height:40px;
+    font-size:14px;
     position:fixed;
     bottom:10px;
     color:white;
+    font-weight:700;
     width:calc(100% - 20px);
-    box-sizing: border-box;
     background-color:#6ADBCF;
-    padding: 10px 0;
     text-align: center;
-    border-radius:5px;
+    border-radius:7px;
   }
   .icon-more{
     color:#6ADBCF;
