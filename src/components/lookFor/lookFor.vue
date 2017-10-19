@@ -1,8 +1,8 @@
 <template>
   <transition name="page">
-  <div class="lookFor-wrapper" v-show="showPage">
-      <div class="header">
-        <i class="icon-back" @click="toHide()"></i>
+  <div class="lookFor-wrapper">
+      <div class="lookFor-header">
+        <i class="icon-back" @click="goBack()"></i>
         <span>管理求职意向</span>
       </div>
       <div class="page-body">
@@ -60,19 +60,13 @@
     export default {
       data(){
         return {
-          ifShow:false,
-          showPage:false
+          userInfo:{},
+          ifShow:false
         }
       },
-      props:{
-        userInfo:{
-          type:Object,
-          default(){
-            return {
-
-            }
-          }
-        }
+      mounted(){
+          debugger;
+        this.userInfo  = this.$route.query.userInfo;
       },
       methods:{
         showEdit(){
@@ -87,12 +81,9 @@
         changeStatus(status){
           this.ifShow = true;
         },
-        toHide(){
-          this.showPage = false;
+        goBack(){
+          this.$router.go(-1);
         },
-        toShow(){
-          this.showPage = true;
-        }
       },
       components:{
         editLookFor
@@ -122,9 +113,9 @@
     z-index:200;
     height:100%;
     width:100%;
-    transition:all 0.4s ease;
+    transition:all 0.2s ease;
   }
-  .header{
+  .lookFor-header{
     position:fixed;
     text-align: center;
     color:white;

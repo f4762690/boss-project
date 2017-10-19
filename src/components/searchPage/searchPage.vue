@@ -1,7 +1,7 @@
 <template>
   <transition name="leftToRight">
-    <div class="search-wrapper" v-if="showPage">
-      <div class="header">
+    <div class="search-wrapper">
+      <div class="search-header">
         <span class="search-input">
           <span class="location-wrapper">
             {{choseLocation}}
@@ -60,7 +60,6 @@
           return{
               historySearch:[],
               hot:{},
-              showPage:false,
           }
         },
         computed:{
@@ -84,10 +83,7 @@
 
             },
             hidePage(){
-              this.showPage = false;
-            },
-            toShow(){
-              this.showPage = true;
+              this.$router.go(-1);
             }
         }
     }
@@ -96,7 +92,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .search-wrapper{
-    transition:all 0.3s linear;
+    transition:all 0.2s linear;
     background-color:#eee;
     width:100%;
     height:100%;
@@ -105,7 +101,7 @@
     top:0;
     left:0;
   }
-  .header{
+  .search-header{
     box-sizing:border-box;
     padding:8px 10px;
     background-color:#6ADBCF;

@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <bs-nav></bs-nav>
-    <router-view></router-view>
+    <router-view name="default"></router-view>
+    <router-view name="otherPage"></router-view>
   </div>
 </template>
 
@@ -18,7 +19,6 @@ export default {
     components:{
         bsNav
     }
-
 }
 </script>
 

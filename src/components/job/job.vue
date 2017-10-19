@@ -3,8 +3,10 @@
        <div class="header">
          <span class="text">web前端</span>
          <div class="icon">
-           <i class="icon-add" @click="addLookFor"></i>
-           <i class="icon-search" @click="showSearchPage"></i>
+           <i class="icon-add" @click="goLookFor()"></i>
+           <router-link to="/job/searchPage" tag="span">
+             <i class="icon-search"></i>
+           </router-link>
          </div>
        </div>
       <div class="job-chose">
@@ -48,15 +50,11 @@
          </ul>
          </div>
        </div>
-          <look-for ref="lookFor" :userInfo="userInfo"></look-for>
-          <search-page ref="searchPageDiv" :choseLocation="choseLocation"></search-page>
     </div>
 </template>
 
 <script>
   import jobChose from './jobChose/jobChose.vue';
-  import searchPage from './page/searchPage/searchPage.vue';
-  import lookFor from './page/lookFor/lookFor.vue';
   import axios from 'axios';
   import BScroll from 'better-scroll';
     export default {
@@ -282,20 +280,23 @@
         })
       },
       methods:{
+        goLookFor(){
+          this.$router.push({
+            path:'/job/lookFor',
+            query:{
+              'userInfo':this.userInfo
+            }
+          })
+        },
         initScroll_(){
            this.contentScroll = new BScroll(this.$refs.contentId,{
                click:true,
+               scrollbar:true
            })
         },
-        addLookFor(){
-          this.$refs.lookFor.toShow();
-        },
-        showSearchPage(){
-            this.$refs.searchPageDiv.toShow();
-        }
       },
       components:{
-        jobChose,lookFor,searchPage
+        jobChose
       }
 
     }
@@ -303,5 +304,101 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  @import 'job.css';
+  .header{
+    font-size:0;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#6ADBCF;
+    width:100%;
+    height:48px;
+    padding:0 15px;
+    box-sizing:border-box;
+    opacity:100;
+  }
+  .header .text{
+    vertical-align:top;
+    color:#fff;
+    font-size:18px;
+    line-height:48px;
+  }
+  .icon{
+    float:right;
+    color:white;
+    display:inline-block;
+    font-size:18px;
+    line-height:48px;
+  }
+  .icon-add{
+    font-size:20px;
+    border-right:1px solid #fff;
+    padding-right:10px;
+  }
+  .icon-search{
+    margin-left:5px;
+  }
+  .job-content{
+    position:fixed;
+    top:78px;
+    bottom:48px;
+    left:0;
+    font-size:0;
+    width:100%;
+    overflow:auto;
+  }
+  .job-items{
+    padding:6px;
+    background-color:#eee;
+  }
+  .job-item{
+    background-color:white;
+    padding: 10px;
+    margin-bottom:6px;
+  }
+  .title{
+    font-size:16px;
+  }
+  .price{
+    color:red;
+    font-size:14px;
+    float:right;
+  }
+  .content{
+    margin:10px 0;
+    font-size:14px;
+    color:rgba(7,17,27,0.7);
+  }
+  .content-wrapper{
+  }
+  .content-detail{
+    margin-bottom:10px;
+  }
+  .content-detail span{
+    font-size:10px;
+    margin-right:10px;
+  }
+  .content-footer{
+    border-top:1px solid #eee;
+    padding-top:10px;
+  }
+  .hr-img{
+    width:24px;
+    height:24px;
+    border-radius:50%;
+    margin-right:10px;
+    vertical-align:middle;
+  }
+  .footer-text{
+    vertical-align:middle;
+    color:#6ADBCF;
+    font-size:14px;
+  }
+  .clear{
+    clear:both;
+  }
+  .content-detail i{
+    font-size:10px;
+    color:rgba(7,17,27,0.7);
+    margin-right:5px;
+  }
 </style>
