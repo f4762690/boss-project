@@ -1,5 +1,4 @@
 <template>
-  <transition name="page">
   <div class="lookFor-wrapper">
       <div class="lookFor-header">
         <i class="icon-back" @click="goBack()"></i>
@@ -33,7 +32,6 @@
           </p>
         </div>
       </div>
-      <edit-look-for ref="editLook" :userInfo="userInfo"></edit-look-for>
       <transition name="bottomToTop">
       <div class="changeStatus" v-show="ifShow">
         <p>
@@ -52,7 +50,6 @@
        <div class="bg" @click="hideChangeStatus" v-show="ifShow"></div>
       </transition>
   </div>
-  </transition>
 </template>
 
 <script>
@@ -65,14 +62,21 @@
         }
       },
       mounted(){
-        this.userInfo  = this.$route.query.userInfo;
+        this.userInfo  = this.$store.userInfo;
       },
       methods:{
         showEdit(){
-          this.$refs.editLook.toShow();
+            this.$router.push({
+              path:'/job/edit/lookFor',
+            })
         },
         showAdd(){
-          this.$refs.editLook.addLookFor();
+          this.$router.push({
+            path:'/job/edit/lookFor',
+            query:{
+                type:'add'
+            }
+          })
         },
         hideChangeStatus(){
           this.ifShow = false;
@@ -92,12 +96,6 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .page-enter,.page-leave-to{
-    transform: translate3d(0,0,0);
-  }
-  .page-enter-active,.page-leave-active{
-    transform: translate3d(100%,0,0);
-  }
   .hideToShow-enter,.hideToShow-leave-to{
     opacity:1;
   }

@@ -277,15 +277,14 @@
       created(){
         axios.get('/api/get/userInfo').then((res) => {
             this.userInfo = res.data.data;
+            this.$store.userInfo = this.userInfo;
+            this.initScroll_();
         })
       },
       methods:{
         goLookFor(){
           this.$router.push({
             path:'/job/lookFor',
-            query:{
-              'userInfo':this.userInfo
-            }
           })
         },
         initScroll_(){

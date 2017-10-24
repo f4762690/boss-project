@@ -1,5 +1,4 @@
 <template>
-  <transition name="leftToRight">
     <div class="search-wrapper">
       <div class="search-header">
         <span class="search-input">
@@ -50,7 +49,6 @@
       </div>
 
     </div>
-  </transition>
 </template>
 
 <script>
@@ -175,12 +173,6 @@
   .clear{
     text-align:center;
     margin-top:10px;
-  }
-  .leftToRight-enter,.leftToRight-leave-to{
-    transform: translate3d(0,0,0);
-  }
-  .leftToRight-enter-active,.leftToRight-leave-active{
-    transform: translate3d(100%,0,0);
   }
   .hot-text{
     font-size:14px;

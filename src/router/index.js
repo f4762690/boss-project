@@ -29,11 +29,21 @@ export default new Router({
       components: {
         'default':resolve =>require(["../components/job/job.vue"], resolve),
         'otherPage':resolve => require(["../components/lookFor/lookFor.vue"], resolve)
+      },
+    },
+    {
+      path: '/job/edit/lookFor',
+      name: 'editLookFor',
+      components: {
+        'default':resolve =>require(["../components/job/job.vue"], resolve),
+        'otherPage':resolve => require(["../components/editLookFor/editLookFor.vue"], resolve)
       }
-    },{
+    },
+    {
       path: '/job/searchPage',
       name: 'searchPage',
       components: {
+        'default':resolve =>require(["../components/job/job.vue"], resolve),
         "otherPage": resolve => require(["../components/searchPage/searchPage.vue"], resolve)
       }
     },

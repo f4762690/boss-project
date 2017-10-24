@@ -1,8 +1,7 @@
 <template>
-  <transition name="page">
-    <div class="lookFor-wrapper" v-show="showPage">
+    <div class="lookFor-wrapper">
       <div class="header">
-        <i class="icon-back" @click="toHide()"></i>
+        <i class="icon-back" @click="$router.back()"></i>
         <span>{{title}}</span>
       </div>
       <div class="bossSee" v-show="addShow">
@@ -71,7 +70,6 @@
       <hope-position ref="hopePositionRef"></hope-position>
       </transition>
     </div>
-  </transition>
 </template>
 
 <script>
@@ -79,12 +77,18 @@
   export default {
     data(){
       return {
+        userInfo:{},
         addShowBgt:false,
         addShow:false,
         title:"编辑求职意向",
         ifShow:false,
-        showPage:false
       }
+    },
+    created(){
+        this.userInfo = this.$store.userInfo;
+        if(this.$route.query.type === 'add'){ //如果是添加
+            this.addLookFor();
+        }
     },
     computed:{
       getIndustry(){
@@ -92,16 +96,6 @@
           return "不限"
         }else{
           return this.userInfo.industry.length+"个标签"
-        }
-      }
-    },
-    props:{
-      userInfo:{
-        type:Object,
-        default(){
-          return {
-
-          }
         }
       }
     },
@@ -115,9 +109,7 @@
       addLookFor(){
           this.title="添加求职意向";
           this.addShowBgt = true;
-          this.showPage = true;
           this.addShow = true;
-          this.$emit('addLookFor');
       },
       hideChangeStatus(){
         this.ifShow = false;
@@ -126,14 +118,11 @@
         this.ifShow = true;
       },
       toHide(){
-        this.showPage = false;
       },
       toShow(){
         this.title="编辑求职意向";
         this.addShowBgt = false;
-        this.showPage = false;
         this.addShow = false;
-        this.showPage = true;
       }
     },
     components:{
